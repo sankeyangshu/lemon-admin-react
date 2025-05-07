@@ -1,4 +1,5 @@
-import path from 'path';
+import path from 'node:path';
+import process from 'node:process';
 
 export function isDevFn(mode: string): boolean {
   return mode === 'development';
@@ -19,8 +20,12 @@ export function isReportMode(): boolean {
   return process.env.VITE_REPORT === 'true';
 }
 
-// Read all environment variable configuration files to process.env
-// 读取并处理所有环境变量配置文件 .env
+/**
+ * Read all environment variable configuration files to process.env (读取并处理所有环境变量配置文件 .env)
+ *
+ * @param envConf - A record of environment variables to be processed.
+ * @returns An object containing the processed environment variables with appropriate types.
+ */
 export function wrapperEnv(envConf: Recordable): ViteEnv {
   const ret: any = {};
 
@@ -35,11 +40,11 @@ export function wrapperEnv(envConf: Recordable): ViteEnv {
     if (envName === 'VITE_PROXY') {
       try {
         realName = JSON.parse(realName);
-      } catch (error) {
-        console.log(error);
-      }
+        // eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/no-unused-vars
+      } catch (error) {}
     }
     ret[envName] = realName;
+    process.env[envName] = realName;
   }
   return ret;
 }

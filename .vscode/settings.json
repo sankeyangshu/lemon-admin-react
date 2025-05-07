@@ -1,0 +1,24 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+  "eslint.useFlatConfig": true,
+  "editor.formatOnSave": false,
+  "eslint.validate": [
+    "html",
+    "css",
+    "less",
+    "postcss",
+    "json",
+    "jsonc",
+    "yaml",
+    "yml",
+    "markdown"
+  ],
+  "prettier.enable": false,
+
+  "i18n-ally.displayLanguage": "zh-CN",
+  "i18n-ally.localesPaths": ["src/locales/modules"],
+  "i18n-ally.keystyle": "nested"
+}

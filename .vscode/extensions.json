@@ -1,10 +1,11 @@
 {
   "recommendations": [
-    "dsznajder.es7-react-js-snippets",
+    "sankeyangshu.vscode-javascript-typescript-snippets",
+    "sankeyangshu.vscode-react-collection-snippets",
+    "antfu.unocss",
     "dbaeumer.vscode-eslint",
+    "mikestead.dotenv",
     "editorconfig.editorconfig",
-    "esbenp.prettier-vscode",
-    "clinyong.vscode-css-modules",
-    "stylelint.vscode-stylelint"
+    "usernamehw.errorlens"
   ]
 }
