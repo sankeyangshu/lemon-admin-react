@@ -1,5 +1,6 @@
 import { Button } from 'antd';
 import { m } from 'motion/react';
+import { memo, type FC } from 'react';
 import { NavLink } from 'react-router';
 import { MotionContainer } from '@/components/animate';
 import { varFade } from '@/components/animate/variants/fade';
@@ -10,7 +11,7 @@ interface ErrorBaseProps {
   errorBg: string;
 }
 
-const ErrorBase = ({ title, errorBg }: ErrorBaseProps) => {
+const ErrorBase: FC<ErrorBaseProps> = ({ title, errorBg }) => {
   // 云朵
   const cloud = [
     {
@@ -96,4 +97,4 @@ const ErrorBase = ({ title, errorBg }: ErrorBaseProps) => {
   );
 };
 
-export default ErrorBase;
+export default memo(ErrorBase);
