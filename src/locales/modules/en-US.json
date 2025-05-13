@@ -1,0 +1,16 @@
+{
+  "api": {
+    "errMsg400": "Request failed! Please try again later",
+    "errMsg401": "Login failed! Please log in again",
+    "errMsg403": "The current account does not have permission to access!",
+    "errMsg404": "The resource you are accessing does not exist!",
+    "errMsg405": "Request method error! Please try again later",
+    "errMsg408": "Request timed out! Please try again later",
+    "errMsg500": "Service exception!",
+    "errMsg501": "Network not implemented!",
+    "errMsg502": "Network error!",
+    "errMsg503": "Service unavailable, server temporarily overloaded or under maintenance!",
+    "errMsg504": "Network timeout!",
+    "errMsgDefault": "Request failed!"
+  }
+}

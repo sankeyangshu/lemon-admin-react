@@ -1,5 +1,6 @@
 /**
- * 动画配置类型
+ * Animation config
+ * @descCN 动画配置类型
  */
 export type VariantsType = {
   durationIn?: number;
@@ -17,7 +18,8 @@ export type VariantsType = {
 };
 
 /**
- * 过渡动画类型
+ * Transition animation type
+ * @descCN 过渡动画类型
  */
 export type TranHoverType = {
   duration?: number;
@@ -25,7 +27,8 @@ export type TranHoverType = {
 };
 
 /**
- * 过渡动画进入类型
+ * Transition animation enter type
+ * @descCN 过渡动画进入类型
  */
 export type TranEnterType = {
   durationIn?: number;
@@ -33,7 +36,8 @@ export type TranEnterType = {
 };
 
 /**
- * 过渡动画退出类型
+ * Transition animation exit type
+ * @descCN 过渡动画退出类型
  */
 export type TranExitType = {
   durationOut?: number;
