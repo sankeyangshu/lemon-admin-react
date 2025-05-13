@@ -1,14 +1,14 @@
 import { m } from 'motion/react';
 import { varContainer } from './variants/container';
-import type { PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 /**
  * 动画容器组件
  */
-export const MotionContainer = ({
+export const MotionContainer: FC<PropsWithChildren<{ className?: string }>> = ({
   children,
   className,
-}: PropsWithChildren<{ className?: string }>) => {
+}) => {
   return (
     <m.div
       initial="initial"
