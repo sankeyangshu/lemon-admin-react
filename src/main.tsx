@@ -1,12 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
-import './styles/index.less'; // 导入默认样式
-import '@/lang'; // 导入国际化
+import { setupI18n } from './locales'; // 引入国际化配置
 import 'virtual:svg-icons-register'; // svg-icons注册导入
+import './styles/index.less'; // 引入全局样式
+import 'virtual:uno.css'; // 引入unocss
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+function bootstrap() {
+  setupI18n(); // 初始化国际化
+
+  const container = document.getElementById('root');
+  if (!container) return;
+  const root = createRoot(container);
+  root.render(<App />);
+}
+
+bootstrap();
