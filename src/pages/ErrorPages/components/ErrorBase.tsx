@@ -1,10 +1,11 @@
 import { Button } from 'antd';
 import { m } from 'motion/react';
-import { memo, type FC } from 'react';
+import { memo, useMemo, type FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
-import { MotionContainer } from '@/components/animate';
-import { varFade } from '@/components/animate/variants/fade';
-import Icon from '@/components/icon';
+import { MotionContainer } from '@/components/Animate';
+import { varFade } from '@/components/Animate/variants/fade';
+import SvgIcon from '@/components/SvgIcon';
 
 interface ErrorBaseProps {
   title: string;
@@ -12,6 +13,8 @@ interface ErrorBaseProps {
 }
 
 const ErrorBase: FC<ErrorBaseProps> = ({ title, errorBg }) => {
+  const { t } = useTranslation();
+
   // 云朵
   const cloud = [
     {
@@ -35,33 +38,35 @@ const ErrorBase: FC<ErrorBaseProps> = ({ title, errorBg }) => {
   ];
 
   // 右侧内容
-  const elements = [
-    {
-      id: 'title',
-      content: <div className="mb-20 text-32 text-[#1482f0] font-bold leading-40">{title}</div>,
-    },
-    {
-      id: 'description',
-      content: (
-        <div className="mb-30 text-13 text-gray leading-21">
-          请检查URL地址是否正确, 或点击回到首页。
-        </div>
-      ),
-    },
-    {
-      id: 'link',
-      content: (
-        <NavLink to="/">
-          <Button type="primary">回到首页</Button>
-        </NavLink>
-      ),
-    },
-  ];
+  const elements = useMemo(
+    () => [
+      {
+        id: 'title',
+        content: (
+          <div className="mb-20 text-32 text-primary font-bold leading-40">
+            {t(`system.${title}`)}
+          </div>
+        ),
+      },
+      {
+        id: 'description',
+        content: <div className="mb-30 text-13 text-gray leading-21">{t('system.checkUrl')}</div>,
+      },
+      {
+        id: 'link',
+        content: (
+          <NavLink to="/">
+            <Button type="primary">{t('system.goHome')}</Button>
+          </NavLink>
+        ),
+      },
+    ],
+    [t]
+  );
 
   return (
-    <div className="box-border wh-full px-50 py-20">
+    <div className="box-border wh-full bg-layout px-50 py-20">
       <MotionContainer className="flex-center">
-        {/* 左侧图片区域 */}
         <div className="relative w-600 overflow-hidden">
           <img className="w-full" src={errorBg} />
           {cloud.map((item) => (
@@ -79,12 +84,11 @@ const ErrorBase: FC<ErrorBaseProps> = ({ title, errorBg }) => {
                 }).inTopRight
               }
             >
-              <Icon localIcon="error_cloud" size={item.size} />
+              <SvgIcon localIcon="error_cloud" size={item.size} />
             </m.div>
           ))}
         </div>
 
-        {/* 右侧文字区域 */}
         <div className="w-300 overflow-hidden py-30">
           {elements.map((item) => (
             <m.div key={item.id} variants={varFade().inUp}>

@@ -19,6 +19,10 @@
   "prettier.enable": false,
 
   "i18n-ally.displayLanguage": "zh-CN",
+  "i18n-ally.enabledParsers": ["ts"],
+  "i18n-ally.enabledFrameworks": ["react-i18next"],
+  "i18n-ally.extract.targetPickingStrategy": "most-similar",
+  "i18n-ally.pathMatcher": "{locale}/{namespaces}.ts",
   "i18n-ally.localesPaths": ["src/locales/modules"],
   "i18n-ally.keystyle": "nested"
 }

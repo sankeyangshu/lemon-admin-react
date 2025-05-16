@@ -1,25 +1,62 @@
-import './index.less';
+import { Icon as IconifyIcon, type IconifyIcon as IconType } from '@iconify/react';
+import type { CSSProperties } from 'react';
 
-interface SvgProps {
-  icon: string; // 图标的名称 ==> 必传
-  className?: string; // 图标的样式 ==> 非必传
+interface IconPropsType {
+  /**
+   * iconify name (图标名称)
+   */
+  icon?: string | IconType;
+  /**
+   * local svg icon (本地svg图标)
+   */
+  localIcon?: string;
+  /**
+   * icon class name (图标的类名)
+   */
+  className?: string;
+  /**
+   * icon size (图标大小)
+   */
+  size?: string | number;
+  /**
+   * icon color (图标颜色)
+   */
+  color?: string;
+  /**
+   * icon style (图标样式)
+   */
+  style?: CSSProperties;
 }
 
-const SvgIcon = (props: SvgProps) => {
-  /**
-   * svg图标类名
-   */
-  const svgClass = props.className ? 'svg-icon ' + props.className : 'svg-icon';
+const defaultLocalIcon = 'logo';
 
-  /**
-   * 项目内图标
-   */
-  const iconName = props.icon ? `#icon-${props.icon}` : '#icon';
+const symbolId = (localIcon: string = defaultLocalIcon) => {
+  const iconName = localIcon || defaultLocalIcon;
 
-  return (
-    <svg aria-hidden="true" className={svgClass}>
-      <use href={iconName} />
+  return `#icon-${iconName}`;
+};
+
+const SvgIcon = ({
+  icon,
+  localIcon,
+  size = '1em',
+  color = 'currentColor',
+  className = '',
+  style = {},
+}: IconPropsType) => {
+  // If localIcon is passed, render localIcon first
+  return localIcon || !icon ? (
+    <svg aria-hidden="true" height={size} width={size} className={className}>
+      <use fill="currentColor" href={symbolId(localIcon)} />
     </svg>
+  ) : (
+    <IconifyIcon
+      icon={icon}
+      width={size}
+      height={size}
+      className={className}
+      style={{ color, ...style }}
+    />
   );
 };
 

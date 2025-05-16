@@ -1,5 +1,5 @@
-import enUsTrans from './modules/en-US.json';
-import zhCnTrans from './modules/zh-CN.json';
+import enUsTrans from './modules/en-US';
+import zhCnTrans from './modules/zh-CN';
 
 const resources = {
   'en-US': { translation: enUsTrans },
