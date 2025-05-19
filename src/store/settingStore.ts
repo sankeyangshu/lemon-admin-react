@@ -17,7 +17,7 @@ export interface settingsStoreType {
    * Set theme config
    * @descCN 设置主题配置
    */
-  setThemeConfig: (key: App.Theme.ThemeConfigKey, val: string | boolean) => void;
+  setThemeConfig: (key: App.Theme.ThemeConfigKey, val: string | boolean | number) => void;
 
   /**
    * Theme color
@@ -77,11 +77,13 @@ export const useSettingStore = create<settingsStoreType>()(
         isGrey: false,
         isWeak: false,
         isInfoFollowPrimary: true,
+        watermarkText: 'GalaxyAdmin',
+        watermarkVisible: false,
       },
 
       customInfoColor: themeSettings.otherColor.info,
 
-      setThemeConfig: (key: App.Theme.ThemeConfigKey, val: string | boolean) => {
+      setThemeConfig: (key: App.Theme.ThemeConfigKey, val: string | boolean | number) => {
         const { themeConfig, themeColor, customInfoColor } = get();
 
         set({

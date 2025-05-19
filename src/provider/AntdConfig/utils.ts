@@ -55,10 +55,12 @@ export const getAntdTheme = (
         itemSelectedBg: bgColor,
         subMenuItemBg: 'transparent',
       },
-      // MARK: 布局组件样式背景色可能后面需要修改，先看看效果
       Layout: {
+        headerPadding: 0,
         headerBg: containerBgColor,
         siderBg: containerBgColor,
+        footerBg: containerBgColor,
+        footerPadding: 0,
       },
     },
     cssVar: true,

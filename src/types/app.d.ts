@@ -264,6 +264,19 @@ declare namespace App {
        * @default true
        */
       isInfoFollowPrimary: boolean;
+
+      /**
+       * Watermark text
+       * @descCN 水印文字
+       * @default 'GalaxyAdmin'
+       */
+      watermarkText: string;
+      /**
+       * Watermark visible
+       * @descCN 水印可见
+       * @default false
+       */
+      watermarkVisible: boolean;
     }
 
     /**

@@ -12,6 +12,9 @@ export const themeSettings: App.Theme.ThemeSetting = {
   themeColor: '#16a085',
   tokens: {
     dark: {
+      boxShadow: {
+        card: '0 0 5px 1px rgb(255, 255, 255)',
+      },
       colors: {
         'base-text': 'rgb(217, 217, 217)',
         'base-border': 'rgb(65, 66, 67)',
@@ -21,7 +24,7 @@ export const themeSettings: App.Theme.ThemeSetting = {
     },
     light: {
       boxShadow: {
-        card: '0 0 12px rgb(0, 21, 41, 0.08)',
+        card: '0 0 5px 1px rgb(0, 0, 0)',
       },
       colors: {
         'base-text': 'rgb(31, 31, 31)',

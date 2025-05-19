@@ -19,7 +19,12 @@ export const getItem = <T>(key: string): T | null => {
   try {
     const result = window.localStorage.getItem(addPrefix(key));
     if (result) {
-      value = JSON.parse(result);
+      try {
+        value = JSON.parse(result);
+      } catch {
+        // if parse json failed, return the original string
+        value = result as unknown as T;
+      }
     }
   } catch (error) {
     console.error(error);
