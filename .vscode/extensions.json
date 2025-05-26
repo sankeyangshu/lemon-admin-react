@@ -6,6 +6,7 @@
     "dbaeumer.vscode-eslint",
     "mikestead.dotenv",
     "editorconfig.editorconfig",
-    "usernamehw.errorlens"
+    "usernamehw.errorlens",
+    "lokalise.i18n-ally"
   ]
 }
