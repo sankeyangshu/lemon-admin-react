@@ -1,58 +1,55 @@
-import path from 'node:path';
 import process from 'node:process';
-
-export function isDevFn(mode: string): boolean {
-  return mode === 'development';
-}
-
-export function isProdFn(mode: string): boolean {
-  return mode === 'production';
-}
-
-export function isTestFn(mode: string): boolean {
-  return mode === 'test';
-}
+import { red } from 'ansis';
 
 /**
- * Whether to generate package preview
- */
-export function isReportMode(): boolean {
-  return process.env.VITE_REPORT === 'true';
-}
-
-/**
- * Read all environment variable configuration files to process.env (读取并处理所有环境变量配置文件 .env)
- *
+ * Read all environment variable configuration files to process.env
+ * @descCN 读取并处理所有环境变量配置文件
  * @param envConf - A record of environment variables to be processed.
  * @returns An object containing the processed environment variables with appropriate types.
  */
-export function wrapperEnv(envConf: Recordable): ViteEnv {
-  const ret: any = {};
+export function wrapperEnv(envConf: Record<string, string>): Env.ImportMeta {
+  const ret: Record<string, any> = {};
 
   for (const envName of Object.keys(envConf)) {
-    // 去除空格
-    let realName = envConf[envName].replace(/\\n/g, '\n');
-    realName = realName === 'true' ? true : realName === 'false' ? false : realName;
+    const envValue = envConf[envName];
 
-    if (envName === 'VITE_PORT') {
+    if (!envValue) {
+      continue;
+    }
+
+    // 去除空格并处理换行
+    let realName: string | number | boolean | [string, string][] = envValue.replace(/\\n/g, '\n');
+
+    // 转换布尔值
+    if (realName === 'true') {
+      realName = true;
+    } else if (realName === 'false') {
+      realName = false;
+    }
+
+    // 转换端口号
+    if (envName === 'VITE_PORT' && typeof realName === 'string') {
       realName = Number(realName);
     }
-    if (envName === 'VITE_PROXY') {
-      try {
-        realName = JSON.parse(realName);
-        // eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/no-unused-vars
-      } catch (error) {}
-    }
-    ret[envName] = realName;
-    process.env[envName] = realName;
-  }
-  return ret;
-}
 
-/**
- * Get user root directory
- * @param dir file path
- */
-export function getRootPath(...dir: string[]) {
-  return path.resolve(process.cwd(), ...dir);
+    // 转换 JSON 配置
+    if (envName === 'VITE_PROXY' && typeof realName === 'string') {
+      try {
+        realName = JSON.parse(realName) as [string, string][];
+      } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        // eslint-disable-next-line no-console
+        console.log(red(`wrapper vite env error:\n${errorMessage}`));
+      }
+    }
+
+    ret[envName] = realName;
+
+    // 只有字符串和数字类型的值才能设置到 process.env
+    if (typeof realName === 'string' || typeof realName === 'number') {
+      process.env[envName] = String(realName);
+    }
+  }
+
+  return ret as Env.ImportMeta;
 }

@@ -1,41 +1,45 @@
-import React from '@vitejs/plugin-react';
-import UnoCSS from 'unocss/vite';
-import ViteRestart from 'vite-plugin-restart';
-import { configCompressPlugin } from './compress';
-import { configSvgIconsPlugin } from './svgPlugin';
 import type { PluginOption } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
+import react from '@vitejs/plugin-react';
+import viteRestart from 'vite-plugin-restart';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import { setupHtmlPluginConfig } from './html';
+import { setupUnPluginSvgIconConfig } from './unplugin';
 
 /**
  * 配置 vite 插件
- * @param {ViteEnv} viteEnv vite 环境变量配置文件键值队 object
- * @param {boolean} isBuild 是否是打包模式
+ * @param viteEnv vite 环境变量配置文件键值队 object
+ * @param lastBuildTime 最后编译时间
  * @returns vitePlugins[]
  */
-export const createVitePlugins = (viteEnv: ViteEnv, isBuild: boolean) => {
-  // const { VITE_USE_MOCK } = viteEnv;
+export function createVitePlugins(viteEnv: Env.ImportMeta, lastBuildTime: string) {
+  const vitePlugins: PluginOption = [
+    tanstackRouter({
+      target: 'react',
+      autoCodeSplitting: true,
+      routesDirectory: './src/pages',
+    }),
 
-  const vitePlugins: (PluginOption | PluginOption[])[] = [
-    React(),
+    react({
+      babel: {
+        plugins: [['babel-plugin-react-compiler']],
+      },
+    }),
 
-    UnoCSS(),
+    tailwindcss(),
 
-    // 通过这个插件，在修改vite.config.ts文件则不需要重新运行也生效配置
-    ViteRestart({
+    tsconfigPaths(),
+
+    setupUnPluginSvgIconConfig(viteEnv),
+
+    // 通过这个插件，再修改vite.config.ts文件则不需要重新运行也生效配置
+    viteRestart({
       restart: ['vite.config.ts'],
     }),
+
+    setupHtmlPluginConfig(lastBuildTime),
   ];
 
-  // 是否开启 mock 服务  https://github.com/pengzhanbo/vite-plugin-mock-dev-server
-  // if (VITE_USE_MOCK) {
-  //   vitePlugins.push(mockDevServerPlugin());
-  // }
-
-  vitePlugins.push(configSvgIconsPlugin(isBuild));
-
-  if (isBuild) {
-    // 创建打包压缩配置
-    vitePlugins.push(configCompressPlugin(viteEnv));
-  }
-
   return vitePlugins;
-};
+}

@@ -1,21 +1,23 @@
 import type { ProxyOptions } from 'vite';
 
-type ProxyItem = [string, string];
-
-type ProxyList = ProxyItem[];
-
 type ProxyTargetList = Record<string, ProxyOptions>;
 
 const httpsRE = /^https:\/\//;
 
 /**
- * Generate proxy (创建代理，用于解析 .env.development 代理配置)
- * @param {ProxyList} list 代理地址列表
+ * Generate proxy
+ * @descCN 创建代理，用于解析 .env.development 代理配置
+ * @param list 代理地址列表
  */
-export function createProxy(list: ProxyList = []) {
+export function createProxy(list: Env.ImportMeta['VITE_PROXY'] = []) {
   const ret: ProxyTargetList = {};
+
+  if (!Array.isArray(list) || !list.length)
+    return undefined;
+
   for (const [prefix, target] of list) {
     const isHttps = httpsRE.test(target);
+
     // https://github.com/http-party/node-http-proxy#options
     ret[prefix] = {
       target,
@@ -26,5 +28,6 @@ export function createProxy(list: ProxyList = []) {
       ...(isHttps ? { secure: false } : {}),
     };
   }
+
   return ret;
 }
