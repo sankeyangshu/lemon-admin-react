@@ -1,8 +1,7 @@
 {
   "recommendations": [
     "sankeyangshu.vscode-javascript-typescript-snippets",
-    "sankeyangshu.vscode-react-collection-snippets",
-    "antfu.unocss",
+    "bradlc.vscode-tailwindcss",
     "dbaeumer.vscode-eslint",
     "mikestead.dotenv",
     "editorconfig.editorconfig",

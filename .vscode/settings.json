@@ -1,28 +1,72 @@
 {
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
+
+  // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
-  "eslint.useFlatConfig": true,
-  "editor.formatOnSave": false,
+
+  // Silent the stylistic rules in your IDE, but still auto fix them
+  "eslint.rules.customizations": [
+    { "rule": "style/*", "severity": "off", "fixable": true },
+    { "rule": "format/*", "severity": "off", "fixable": true },
+    { "rule": "*-indent", "severity": "off", "fixable": true },
+    { "rule": "*-spacing", "severity": "off", "fixable": true },
+    { "rule": "*-spaces", "severity": "off", "fixable": true },
+    { "rule": "*-order", "severity": "off", "fixable": true },
+    { "rule": "*-dangle", "severity": "off", "fixable": true },
+    { "rule": "*-newline", "severity": "off", "fixable": true },
+    { "rule": "*quotes", "severity": "off", "fixable": true },
+    { "rule": "*semi", "severity": "off", "fixable": true }
+  ],
+
+  // Enable eslint for all supported languages
   "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
     "html",
-    "css",
-    "less",
-    "postcss",
+    "markdown",
     "json",
+    "json5",
     "jsonc",
     "yaml",
-    "yml",
-    "markdown"
+    "toml",
+    "xml",
+    "gql",
+    "graphql",
+    "astro",
+    "svelte",
+    "css",
+    "less",
+    "scss",
+    "pcss",
+    "postcss"
   ],
-  "prettier.enable": false,
 
-  "i18n-ally.displayLanguage": "zh-CN",
+  // ignore routeTree.gen.ts file
+  "files.readonlyInclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "files.watcherExclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "search.exclude": {
+    "**/routeTree.gen.ts": true
+  },
+
+  // i18n-ally settings
+  "i18n-ally.displayLanguage": "zh-cn",
   "i18n-ally.enabledParsers": ["ts"],
   "i18n-ally.enabledFrameworks": ["react-i18next"],
   "i18n-ally.extract.targetPickingStrategy": "most-similar",
-  "i18n-ally.pathMatcher": "{locale}/{namespaces}.ts",
   "i18n-ally.localesPaths": ["src/locales/modules"],
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.parsers.typescript.compilerOptions": {
+    "moduleResolution": "node"
+  }
 }

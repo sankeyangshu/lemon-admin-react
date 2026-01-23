@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@10.28.1",
-  "description": "使用 React + TS 构建的后台管理系统",
+  "description": "An admin system template based on the React ecosystem",
   "author": {
     "name": "sankeyangshu",
     "email": "sankeyangshu@gmail.com",
