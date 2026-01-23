@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import notFound from '@/assets/svg-icon/not-found.svg';
+import { Button } from '../ui/button';
 
 function NotFound() {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ function NotFound() {
       id: 'link',
       content: (
         <Link to="/">
-          <button type="button" className="rounded-md bg-primary px-4 py-2 text-white">{t('system.goHome')}</button>
+          <Button>{t('system.goHome')}</Button>
         </Link>
       ),
     },
@@ -31,7 +32,7 @@ function NotFound() {
   return (
     <div className="box-border size-full p-2.5">
       <div className="flex flex-col items-center justify-center">
-        <img className="w-full" src={notFound} alt="Not Found" />
+        <img className="pointer-events-none size-100" src={notFound} alt="Not Found" />
         <div className="text-center">
           {elements.map((item, index) => (
             <div

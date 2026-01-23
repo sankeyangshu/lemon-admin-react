@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import serverError from '@/assets/svg-icon/server-error.svg';
+import { Button } from '../ui/button';
 
 function ServerError() {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ function ServerError() {
       id: 'link',
       content: (
         <Link to="/">
-          <button type="button" className="rounded-md bg-primary px-4 py-2 text-white">{t('system.goHome')}</button>
+          <Button>{t('system.goHome')}</Button>
         </Link>
       ),
     },
@@ -31,7 +32,7 @@ function ServerError() {
   return (
     <div className="box-border size-full p-2.5">
       <div className="flex flex-col items-center justify-center">
-        <img className="w-full" src={serverError} alt="Server Error" />
+        <img className="pointer-events-none size-100" src={serverError} alt="Server Error" />
         <div className="text-center">
           {elements.map((item, index) => (
             <div
