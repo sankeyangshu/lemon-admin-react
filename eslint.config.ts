@@ -25,11 +25,14 @@ export default antfu(
   },
   {
     files: ['**/*.ts', '**/*.tsx'],
-    rules: { 'ts/no-misused-promises': ['error', {
-      checksVoidReturn: {
-        attributes: false,
-      },
-    }] },
+    rules: {
+      'ts/no-misused-promises': ['error', {
+        checksVoidReturn: {
+          attributes: false,
+        },
+      }],
+      'react-refresh/only-export-components': 'warn',
+    },
   },
   {
     plugins: {
