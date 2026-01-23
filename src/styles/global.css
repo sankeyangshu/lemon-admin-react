@@ -130,13 +130,3 @@
     font-size: 16px !important;
   }
 }
-
-/* 动画暂定 */
-@keyframes showRay {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
