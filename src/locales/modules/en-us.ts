@@ -1,6 +1,6 @@
 const local: App.I18n.I18nScheme = {
   system: {
-    title: 'Admin Template',
+    title: 'Lemon Admin',
     goHome: 'Go Home',
     checkUrl: 'Please check if the URL address is correct, or click to go back to the home page.',
     forbidden: 'You do not have access to this page!',

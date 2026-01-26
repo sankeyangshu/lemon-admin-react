@@ -1,6 +1,6 @@
 const local: App.I18n.I18nScheme = {
   system: {
-    title: 'Admin 模版',
+    title: 'Lemon Admin',
     goHome: '回到首页',
     checkUrl: '请检查URL地址是否正确, 或点击回到首页。',
     forbidden: '您没有访问权限！',
