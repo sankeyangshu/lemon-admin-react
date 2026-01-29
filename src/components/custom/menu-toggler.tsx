@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '@/store/app';
 import { Button } from '../ui/button';
@@ -7,17 +8,26 @@ import SvgIcon from './svg-icon';
 function MenuToggler() {
   const { t } = useTranslation();
 
+  const [animationKey, setAnimationKey] = useState(0);
   const sidebarCollapse = useAppStore((state) => state.systemConfig.sidebarCollapse);
   const setSystemConfig = useAppStore((state) => state.setSystemConfig);
+
+  const handleToggle = () => {
+    setSystemConfig('sidebarCollapse', !sidebarCollapse);
+    setAnimationKey((prev) => prev + 1);
+  };
 
   return (
     <Tooltip>
       <TooltipTrigger render={(
-        <Button variant="ghost" onClick={() => setSystemConfig('sidebarCollapse', !sidebarCollapse)}>
-          <SvgIcon
-            icon={sidebarCollapse ? 'line-md:menu-fold-right' : 'line-md:menu-fold-left'}
-            className="size-5!"
-          />
+        <Button variant="ghost" onClick={handleToggle}>
+          <div className="flex size-5 items-center justify-center">
+            <SvgIcon
+              key={`${sidebarCollapse ? 'right' : 'left'}-${animationKey}`}
+              icon={sidebarCollapse ? 'line-md:menu-fold-right' : 'line-md:menu-fold-left'}
+              className="size-5!"
+            />
+          </div>
         </Button>
       )}
       />
