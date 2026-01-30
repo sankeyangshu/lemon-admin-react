@@ -8,6 +8,7 @@ import { Switch } from '@/components/ui/switch';
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/provider/theme';
 import { useAppStore } from '@/store/app';
+import SettingItem from '../../components/setting-item';
 
 interface ThemeItem {
   label: string;
@@ -81,14 +82,12 @@ function ThemeSchema() {
           ))}
         </div>
 
-        <div className="flex w-full items-center justify-between">
-          <div className="text-sm">{t('theme.drawer.appearance.greyMode')}</div>
+        <SettingItem label={t('theme.drawer.appearance.greyMode')}>
           <Switch checked={greyMode} onCheckedChange={(checked) => setThemeConfig({ greyMode: checked })} />
-        </div>
-        <div className="flex w-full items-center justify-between">
-          <div className="text-sm">{t('theme.drawer.appearance.weakMode')}</div>
+        </SettingItem>
+        <SettingItem label={t('theme.drawer.appearance.weakMode')}>
           <Switch checked={weakMode} onCheckedChange={(checked) => setThemeConfig({ weakMode: checked })} />
-        </div>
+        </SettingItem>
       </div>
     </>
   );
