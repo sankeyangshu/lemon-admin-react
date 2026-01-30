@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { localStg } from '@/lib/storage';
+import { useAppStore } from '@/store/app';
 import { ThemeProviderContext } from './hook';
 
 export const DARK_MODE_MEDIA_QUERY = '(prefers-color-scheme: dark)';
@@ -22,6 +23,11 @@ export function ThemeProvider({
     () => (localStg.getItem(storageKey)) || defaultTheme,
   );
 
+  // 订阅灰色和色弱模式
+  const greyMode = useAppStore((state) => state.themeConfig.greyMode);
+  const weakMode = useAppStore((state) => state.themeConfig.weakMode);
+
+  // 处理主题切换
   useEffect(() => {
     const root = window.document.documentElement;
 
@@ -37,6 +43,18 @@ export function ThemeProvider({
 
     root.classList.add(theme);
   }, [theme]);
+
+  // 处理灰色和色弱模式
+  useEffect(() => {
+    const root = window.document.documentElement;
+
+    root.style.filter = [
+      greyMode ? 'grayscale(100%)' : '',
+      weakMode ? 'invert(80%)' : '',
+    ]
+      .filter(Boolean)
+      .join(' ');
+  }, [greyMode, weakMode]);
 
   const value = {
     theme,
