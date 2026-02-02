@@ -26,7 +26,7 @@ function ThemeDrawer() {
           <SheetTitle>{t('theme.drawer.title')}</SheetTitle>
         </SheetHeader>
 
-        <div className="flex-1 overflow-y-auto px-4">
+        <div className="no-scrollbar flex-1 overflow-y-auto px-4">
           <Tabs defaultValue="appearance" className="w-full">
             <TabsList className="h-10 w-full">
               <TabsTrigger value="appearance">{t('theme.drawer.tabs.appearance')}</TabsTrigger>

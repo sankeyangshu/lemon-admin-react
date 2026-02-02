@@ -62,7 +62,7 @@ function LayoutModeCard({ mode, disabled, ...rest }: LayoutModeCardProps) {
     if (disabled)
       return;
 
-    setLayout({ mode });
+    setLayout('mode', mode);
   }
 
   return (
