@@ -9,10 +9,15 @@ function ThemeConfig() {
 
   const toggleThemeDrawer = useAppStore((state) => state.toggleThemeDrawer);
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    toggleThemeDrawer();
+    e.currentTarget.blur();
+  };
+
   return (
     <Tooltip>
       <TooltipTrigger render={(
-        <Button variant="ghost" className="group cursor-pointer" onClick={() => toggleThemeDrawer()}>
+        <Button variant="ghost" className="group cursor-pointer" onClick={handleClick}>
           <SvgIcon
             icon="line-md:cog"
             className="

@@ -30,13 +30,13 @@ function HoverCardContent({
         alignOffset={alignOffset}
         side={side}
         sideOffset={sideOffset}
-        className="isolate z-50"
+        className="isolate z-150"
       >
         <PreviewCardPrimitive.Popup
           data-slot="hover-card-content"
           className={cn(
             `
-              z-50 w-64 origin-(--transform-origin) rounded-lg bg-popover p-4 text-sm
+              z-150 w-64 origin-(--transform-origin) rounded-lg bg-popover p-4 text-sm
               text-popover-foreground shadow-md ring-1 ring-foreground/10 outline-hidden
               duration-100
               data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95
