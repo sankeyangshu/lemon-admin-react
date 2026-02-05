@@ -35,7 +35,7 @@ function UserAvatar() {
         delay={10}
         closeDelay={100}
         render={(
-          <Avatar>
+          <Avatar className="mr-5">
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
@@ -48,8 +48,8 @@ function UserAvatar() {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <div className="ml-3 h-full flex-1">
-            <span className="block truncate text-sm font-medium text-foreground">John Doe</span>
-            <span className="mt-0.5 block truncate text-xs text-gray-500">john.doe@example.com</span>
+            <span className="block truncate text-sm font-medium text-foreground">Admin</span>
+            <span className="mt-0.5 block truncate text-xs text-gray-500">xxx@example.com</span>
           </div>
         </div>
         <ul className="mt-3 border-t border-border pt-4">

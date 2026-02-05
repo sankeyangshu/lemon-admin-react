@@ -147,6 +147,7 @@ function Notice({ className }: { className?: string }) {
                 className="
                   box-border flex cursor-pointer items-center p-3.5
                   last:border-b-0
+                  hover:bg-muted hover:text-foreground
                 "
               >
                 <div
