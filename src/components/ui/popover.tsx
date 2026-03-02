@@ -28,13 +28,13 @@ function PopoverContent({
         alignOffset={alignOffset}
         side={side}
         sideOffset={sideOffset}
-        className="isolate z-150"
+        className="isolate z-50"
       >
         <PopoverPrimitive.Popup
           data-slot="popover-content"
           className={cn(
             `
-              z-150 flex w-72 origin-(--transform-origin) flex-col gap-4 rounded-md bg-popover p-4
+              z-50 flex w-72 origin-(--transform-origin) flex-col gap-4 rounded-md bg-popover p-4
               text-sm text-popover-foreground shadow-md ring-1 ring-foreground/10 outline-hidden
               duration-100
               data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95
