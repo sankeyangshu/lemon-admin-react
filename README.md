@@ -11,6 +11,10 @@
 
 ---
 
+## 🧑‍💻 项目状态
+
+项目重构中，具体计划请查询[清单](https://github.com/sankeyangshu/lemon-admin-react/issues/1)。
+
 ## 简介
 
 🚀🚀🚀 **react-template-admin** 使用了最新的`React18`、`React-Router v6`、`React-Hooks`、`Vite4`、`Zustand`、`Ant Design v5`、`Typescript`等主流技术开发，集成 `Dark Mode`(暗黑)模式，并且持久化保存，集成了代码规范检查工具`Eslint`、`Prettier`、`Stylelint`。另外本项目还封装了一些常用组件、Hooks、指令、动态路由、按钮级别权限控制等功能。你可以在此之上直接开发你的业务代码！希望你能喜欢。👋👋👋
