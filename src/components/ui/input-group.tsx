@@ -17,10 +17,10 @@ function InputGroup({ className, ...props }: React.ComponentProps<'div'>) {
           in-data-[slot=combobox-content]:focus-within:border-inherit
           in-data-[slot=combobox-content]:focus-within:ring-0
           has-[[data-slot=input-group-control]:focus-visible]:border-ring
-          has-[[data-slot=input-group-control]:focus-visible]:ring-[3px]
+          has-[[data-slot=input-group-control]:focus-visible]:ring-3
           has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50
           has-[[data-slot][aria-invalid=true]]:border-destructive
-          has-[[data-slot][aria-invalid=true]]:ring-[3px]
+          has-[[data-slot][aria-invalid=true]]:ring-3
           has-[[data-slot][aria-invalid=true]]:ring-destructive/20
           has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col
           has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col
@@ -50,16 +50,18 @@ const inputGroupAddonVariants = cva(
   {
     variants: {
       align: {
-        'inline-start': `
-          order-first pl-2
-          has-[>button]:-ml-1
-          has-[>kbd]:ml-[-0.15rem]
-        `,
-        'inline-end': `
-          order-last pr-2
-          has-[>button]:-mr-1
-          has-[>kbd]:mr-[-0.15rem]
-        `,
+        'inline-start':
+          `
+            order-first pl-2
+            has-[>button]:-ml-1
+            has-[>kbd]:ml-[-0.15rem]
+          `,
+        'inline-end':
+          `
+            order-last pr-2
+            has-[>button]:-mr-1
+            has-[>kbd]:mr-[-0.15rem]
+          `,
         'block-start':
           `
             order-first w-full justify-start px-2.5 pt-2
@@ -112,10 +114,11 @@ const inputGroupButtonVariants = cva(
           [&>svg:not([class*='size-'])]:size-3.5
         `,
         'sm': '',
-        'icon-xs': `
-          size-6 rounded-[calc(var(--radius)-5px)] p-0
-          has-[>svg]:p-0
-        `,
+        'icon-xs':
+          `
+            size-6 rounded-[calc(var(--radius)-5px)] p-0
+            has-[>svg]:p-0
+          `,
         'icon-sm': `
           size-8 p-0
           has-[>svg]:p-0
@@ -172,12 +175,15 @@ function InputGroupInput({
   return (
     <Input
       data-slot="input-group-control"
-      className={cn(`
-        flex-1 rounded-none border-0 bg-transparent shadow-none ring-0
-        focus-visible:ring-0
-        aria-invalid:ring-0
-        dark:bg-transparent
-      `, className)}
+      className={cn(
+        `
+          flex-1 rounded-none border-0 bg-transparent shadow-none ring-0
+          focus-visible:ring-0
+          aria-invalid:ring-0
+          dark:bg-transparent
+        `,
+        className,
+      )}
       {...props}
     />
   );
@@ -190,12 +196,15 @@ function InputGroupTextarea({
   return (
     <Textarea
       data-slot="input-group-control"
-      className={cn(`
-        flex-1 resize-none rounded-none border-0 bg-transparent py-2 shadow-none ring-0
-        focus-visible:ring-0
-        aria-invalid:ring-0
-        dark:bg-transparent
-      `, className)}
+      className={cn(
+        `
+          flex-1 resize-none rounded-none border-0 bg-transparent py-2 shadow-none ring-0
+          focus-visible:ring-0
+          aria-invalid:ring-0
+          dark:bg-transparent
+        `,
+        className,
+      )}
       {...props}
     />
   );

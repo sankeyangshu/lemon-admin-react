@@ -17,8 +17,8 @@ function Switch({
           peer group/switch relative inline-flex shrink-0 items-center rounded-full border
           border-transparent shadow-xs transition-all outline-none
           after:absolute after:-inset-x-3 after:-inset-y-2
-          focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50
-          aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20
+          focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50
+          aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20
           data-checked:bg-primary
           data-disabled:cursor-not-allowed data-disabled:opacity-50
           data-unchecked:bg-input
