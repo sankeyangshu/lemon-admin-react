@@ -82,4 +82,4 @@ function createStorage<T extends object>(type: StorageType, storagePrefix: strin
  * The local storage
  * @descCN 本地存储
  */
-export const localStg = createStorage<StorageType.Local>('local', import.meta.env.VITE_STORAGE_PREFIX ?? '');
+export const localStg = createStorage<App.Storage.Local>('local', import.meta.env.VITE_STORAGE_PREFIX ?? '');

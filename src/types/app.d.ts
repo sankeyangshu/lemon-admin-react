@@ -48,6 +48,24 @@ declare namespace App {
         cancel: string;
         noMore: string;
       };
+      api: {
+        errMsg400: string;
+        errMsg401: string;
+        errMsg403: string;
+        errMsg404: string;
+        errMsg405: string;
+        errMsg408: string;
+        errMsg500: string;
+        errMsg501: string;
+        errMsg502: string;
+        errMsg503: string;
+        errMsg504: string;
+        errMsg505: string;
+        errMsgDefault: string;
+        requestCancelled: string;
+        networkError: string;
+        requestConfigError: string;
+      };
       login: {
         title: string;
         subTitle: string;
@@ -66,6 +84,29 @@ declare namespace App {
         noAccount: string;
         register: string;
       };
+    }
+  }
+
+  /**
+   * The storage namespace
+   * @descCN 存储命名空间
+   */
+  namespace Storage {
+  /**
+   * The local storage
+   * @descCN 本地存储
+   */
+    interface Local {
+    /**
+     * The i18n language
+     * @descCN 国际化语言
+     */
+      language: App.I18n.LangType;
+      /**
+       * The theme mode
+       * @descCN 主题模式
+       */
+      themeMode: 'dark' | 'light' | 'system';
     }
   }
 }
