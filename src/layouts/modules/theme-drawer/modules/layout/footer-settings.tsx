@@ -9,15 +9,15 @@ import SettingItem from '../../components/setting-item';
 function FooterSettings() {
   const { t } = useTranslation();
 
-  const { layoutMode, scrollMode, footerVisible, fixedFooter, footerHeight, rightFooter } = useAppStore(useShallow((state) => ({
-    layoutMode: state.themeConfig.layout.mode,
-    scrollMode: state.themeConfig.layout.scrollMode,
-    footerVisible: state.themeConfig.footer.visible,
-    fixedFooter: state.themeConfig.footer.fixed,
-    footerHeight: state.themeConfig.footer.height,
-    rightFooter: state.themeConfig.footer.right,
+  const { layoutMode, scrollMode, footerVisible, footerFixed, footerHeight, footerRight, setFooter } = useAppStore(useShallow((state) => ({
+    layoutMode: state.system.layout.mode,
+    scrollMode: state.system.layout.scrollMode,
+    footerVisible: state.system.footer.visible,
+    footerFixed: state.system.footer.fixed,
+    footerHeight: state.system.footer.height,
+    footerRight: state.system.footer.right,
+    setFooter: state.setFooter,
   })));
-  const setFooter = useAppStore((state) => state.setFooter);
 
   const isWrapperScrollMode = scrollMode === 'wrapper';
   const isMixHorizontalMode = ['top-hybrid-sidebar-first', 'top-hybrid-header-first'].includes(layoutMode);
@@ -32,7 +32,7 @@ function FooterSettings() {
       </SettingItem>
       {footerVisible && isWrapperScrollMode && (
         <SettingItem label={t('theme.drawer.layout.footer.fixed')}>
-          <Switch checked={fixedFooter} onCheckedChange={(checked) => setFooter('fixed', checked)} />
+          <Switch checked={footerFixed} onCheckedChange={(checked) => setFooter('fixed', checked)} />
         </SettingItem>
       )}
       {footerVisible && (
@@ -47,7 +47,7 @@ function FooterSettings() {
       )}
       {footerVisible && isMixHorizontalMode && (
         <SettingItem label={t('theme.drawer.layout.footer.right')}>
-          <Switch checked={rightFooter} onCheckedChange={(checked) => setFooter('right', checked)} />
+          <Switch checked={footerRight} onCheckedChange={(checked) => setFooter('right', checked)} />
         </SettingItem>
       )}
     </>

@@ -37,6 +37,130 @@ const local: App.I18n.I18nScheme = {
     networkError: '网络连接异常，请检查网络连接！',
     requestConfigError: '请求配置错误',
   },
+  theme: {
+    header: {
+      menuToggler: {
+        expand: '展开菜单',
+        collapse: '折叠菜单',
+      },
+      fullScreen: {
+        enter: '全屏',
+        exit: '退出全屏',
+      },
+      globalSearch: {
+        title: '搜索',
+        placeholder: '搜索页面',
+        history: '历史记录',
+        selectKeyDown: '选择',
+        switchKeyDown: '切换',
+        exitKeyDown: '关闭',
+      },
+      themeMode: '主题模式',
+      locale: '切换语言',
+      notice: {
+        title: '通知',
+        info: '消息',
+        todo: '待办',
+        not: '暂无内容',
+        all: '查看全部',
+      },
+      user: {
+        userCenter: '个人中心',
+        docs: '使用文档',
+        github: 'Github',
+        lockScreen: '锁定屏幕',
+      },
+    },
+    drawer: {
+      title: '主题配置',
+      tabs: {
+        appearance: '外观',
+        layout: '布局',
+        general: '通用',
+      },
+      appearance: {
+        themeSchema: {
+          title: '主题模式',
+          light: '浅色',
+          dark: '深色',
+          auto: '系统',
+        },
+        greyMode: '灰色模式',
+        weakMode: '色弱模式',
+        themeRadius: '主题圆角',
+      },
+      layout: {
+        layoutMode: {
+          'title': '布局模式',
+          'vertical': '左侧菜单模式',
+          'vertical-mix': '左侧菜单混合模式',
+          'vertical-hybrid-header-first': '左侧混合-顶部优先',
+          'horizontal': '顶部菜单模式',
+          'top-hybrid-sidebar-first': '顶部混合-侧边优先',
+          'top-hybrid-header-first': '顶部混合-顶部优先',
+          'vertical_detail': '左侧菜单布局，菜单在左，内容在右。',
+          'vertical-mix_detail': '左侧双菜单布局，一级菜单在左侧深色区域，二级菜单在左侧浅色区域。',
+          'vertical-hybrid-header-first_detail':
+            '左侧混合布局，一级菜单在顶部，二级菜单在左侧深色区域，三级菜单在左侧浅色区域。',
+          'horizontal_detail': '顶部菜单布局，菜单在顶部，内容在下方。',
+          'top-hybrid-sidebar-first_detail': '顶部混合布局，一级菜单在左侧，二级菜单在顶部。',
+          'top-hybrid-header-first_detail': '顶部混合布局，一级菜单在顶部，二级菜单在左侧。',
+        },
+        tab: {
+          title: '标签栏设置',
+          visible: '显示标签栏',
+          height: '标签栏高度',
+          mode: {
+            title: '标签栏风格',
+            slider: '滑块风格',
+            chrome: '谷歌风格',
+            button: '按钮风格',
+          },
+          closeByMiddleClick: '鼠标中键关闭标签页',
+          closeByMiddleClickTip: '启用后可以使用鼠标中键点击标签页进行关闭',
+        },
+        header: {
+          title: '头部设置',
+          height: '头部高度',
+          breadcrumb: {
+            visible: '显示面包屑',
+            showIcon: '显示面包屑图标',
+          },
+        },
+        sidebar: {
+          title: '侧边栏设置',
+          inverted: '深色侧边栏',
+          width: '侧边栏宽度',
+          collapsedWidth: '侧边栏折叠宽度',
+          mixWidth: '混合布局侧边栏宽度',
+          mixCollapsedWidth: '混合布局侧边栏折叠宽度',
+          mixChildMenuWidth: '混合布局子菜单宽度',
+          autoSelectFirstMenu: '自动选择第一个子菜单',
+          autoSelectFirstMenuTip: '点击一级菜单时，自动选择并导航到第一个子菜单的最深层级',
+        },
+        footer: {
+          title: '底部设置',
+          visible: '显示底部',
+          fixed: '固定底部',
+          height: '底部高度',
+          right: '底部居右',
+        },
+        content: {
+          title: '内容区域设置',
+          scrollMode: {
+            title: '滚动模式',
+            tip: '主题滚动仅 main 部分滚动，外层滚动可携带头部底部一起滚动',
+            wrapper: '外层滚动',
+            content: '主体滚动',
+          },
+        },
+      },
+      footer: {
+        copyConfig: '复制配置',
+        resetConfig: '重置配置',
+      },
+    },
+  },
   login: {
     title: '欢迎回来',
     subTitle: '输入您的账号和密码登录',
@@ -54,6 +178,7 @@ const local: App.I18n.I18nScheme = {
     otherSignIn: '其他登录方式',
     noAccount: '还没有账号？',
     register: '注册',
+    logout: '退出登录',
   },
 };
 

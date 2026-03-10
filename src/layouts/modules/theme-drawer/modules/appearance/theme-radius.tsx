@@ -7,8 +7,8 @@ import SettingItem from '../../components/setting-item';
 function ThemeRadius() {
   const { t } = useTranslation();
 
-  const themeRadius = useAppStore((state) => state.themeConfig.themeRadius);
-  const setThemeConfig = useAppStore((state) => state.setThemeConfig);
+  const themeRadius = useAppStore((state) => state.system.theme.radius);
+  const setTheme = useAppStore((state) => state.setTheme);
 
   return (
     <>
@@ -19,7 +19,7 @@ function ThemeRadius() {
         <Input
           type="number"
           value={themeRadius}
-          onChange={(e) => setThemeConfig({ themeRadius: Number(e.target.value) })}
+          onChange={(e) => setTheme('radius', Number(e.target.value))}
           className="w-full max-w-30"
         />
       </SettingItem>

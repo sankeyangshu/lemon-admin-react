@@ -9,11 +9,11 @@ function MenuToggler() {
   const { t } = useTranslation();
 
   const [animationKey, setAnimationKey] = useState(0);
-  const sidebarCollapse = useAppStore((state) => state.systemConfig.sidebarCollapse);
-  const setSystemConfig = useAppStore((state) => state.setSystemConfig);
+  const sidebarCollapse = useAppStore((state) => state.system.settings.sidebarCollapse);
+  const setSettings = useAppStore((state) => state.setSettings);
 
   const handleToggle = () => {
-    setSystemConfig('sidebarCollapse', !sidebarCollapse);
+    setSettings('sidebarCollapse', !sidebarCollapse);
     setAnimationKey((prev) => prev + 1);
   };
 

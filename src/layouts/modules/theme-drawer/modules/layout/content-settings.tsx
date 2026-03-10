@@ -10,10 +10,10 @@ import SettingItem from '../../components/setting-item';
 function ContentSettings() {
   const { t } = useTranslation();
 
-  const { scrollMode } = useAppStore(useShallow((state) => ({
-    scrollMode: state.themeConfig.layout.scrollMode,
+  const { scrollMode, setLayout } = useAppStore(useShallow((state) => ({
+    scrollMode: state.system.layout.scrollMode,
+    setLayout: state.setLayout,
   })));
-  const setLayout = useAppStore((state) => state.setLayout);
 
   const modeOptions = [
     { label: t('theme.drawer.layout.content.scrollMode.wrapper'), value: 'wrapper' },

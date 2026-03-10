@@ -1,10 +1,9 @@
-import type { PropsWithChildren, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
-type Props = PropsWithChildren<{
+type Props = React.PropsWithChildren<{
   className?: string;
-  label: ReactNode;
-  suffix?: ReactNode;
+  label: React.ReactNode;
+  suffix?: React.ReactNode;
 }>;
 
 function SettingItem({ className, label, suffix, children }: Props) {

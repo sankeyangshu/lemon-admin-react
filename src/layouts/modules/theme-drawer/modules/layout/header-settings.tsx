@@ -9,12 +9,12 @@ import SettingItem from '../../components/setting-item';
 function HeaderSettings() {
   const { t } = useTranslation();
 
-  const { height, breadcrumbVisible, breadcrumbShowIcon } = useAppStore(useShallow((state) => ({
-    height: state.themeConfig.header.height,
-    breadcrumbVisible: state.themeConfig.header.breadcrumb.visible,
-    breadcrumbShowIcon: state.themeConfig.header.breadcrumb.showIcon,
+  const { height, breadcrumbVisible, breadcrumbShowIcon, setHeader } = useAppStore(useShallow((state) => ({
+    height: state.system.header.height,
+    breadcrumbVisible: state.system.header.breadcrumbVisible,
+    breadcrumbShowIcon: state.system.header.breadcrumbShowIcon,
+    setHeader: state.setHeader,
   })));
-  const setHeader = useAppStore((state) => state.setHeader);
 
   return (
     <>
@@ -25,17 +25,17 @@ function HeaderSettings() {
         <Input
           type="number"
           value={height}
-          onChange={(e) => setHeader({ height: Number(e.target.value) })}
+          onChange={(e) => setHeader('height', Number(e.target.value))}
           className="w-full max-w-30"
         />
       </SettingItem>
       <SettingItem label={t('theme.drawer.layout.header.breadcrumb.visible')}>
-        <Switch checked={breadcrumbVisible} onCheckedChange={(checked) => setHeader({ breadcrumb: { visible: checked, showIcon: breadcrumbShowIcon } })} />
+        <Switch checked={breadcrumbVisible} onCheckedChange={(checked) => setHeader('breadcrumbVisible', checked)} />
       </SettingItem>
       {
         breadcrumbVisible && (
           <SettingItem label={t('theme.drawer.layout.header.breadcrumb.showIcon')}>
-            <Switch checked={breadcrumbShowIcon} onCheckedChange={(checked) => setHeader({ breadcrumb: { visible: breadcrumbVisible, showIcon: checked } })} />
+            <Switch checked={breadcrumbShowIcon} onCheckedChange={(checked) => setHeader('breadcrumbShowIcon', checked)} />
           </SettingItem>
         )
       }

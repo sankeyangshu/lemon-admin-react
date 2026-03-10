@@ -20,7 +20,7 @@ function RootComponent() {
   const matches = useMatches();
 
   // 获取当前路由的 staticData（最后一个匹配的路由）
-  const currentMatch = matches[matches.length - 1];
+  const currentMatch = matches.at(-1);
   const { i18nKey, title: staticTitle } = currentMatch?.staticData ?? {};
 
   // 页面标题守卫：优先使用 i18nKey 翻译，其次使用 title，最后使用默认标题

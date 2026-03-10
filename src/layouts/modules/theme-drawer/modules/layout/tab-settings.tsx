@@ -12,13 +12,13 @@ import SettingItem from '../../components/setting-item';
 function TabSettings() {
   const { t } = useTranslation();
 
-  const { visible, height, mode, closeTabByMiddleClick } = useAppStore(useShallow((state) => ({
-    visible: state.themeConfig.tab.visible,
-    height: state.themeConfig.tab.height,
-    mode: state.themeConfig.tab.mode,
-    closeTabByMiddleClick: state.themeConfig.tab.closeTabByMiddleClick,
+  const { visible, height, mode, closeTabByMiddleClick, setTab } = useAppStore(useShallow((state) => ({
+    visible: state.system.tab.visible,
+    height: state.system.tab.height,
+    mode: state.system.tab.mode,
+    closeTabByMiddleClick: state.system.tab.closeTabByMiddleClick,
+    setTab: state.setTab,
   })));
-  const setTab = useAppStore((state) => state.setTab);
 
   const modeOptions = [
     { label: t('theme.drawer.layout.tab.mode.chrome'), value: 'chrome' },

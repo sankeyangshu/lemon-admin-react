@@ -12,7 +12,7 @@ import SettingItem from '../../components/setting-item';
 
 interface ThemeItem {
   label: string;
-  value: StorageType.Local['themeMode'];
+  value: App.Storage.Local['themeMode'];
   img: string;
 }
 
@@ -38,14 +38,13 @@ function ThemeSchema() {
     },
   ];
 
-  const { greyMode, weakMode } = useAppStore(
+  const { greyMode, weakMode, setThemeConfig } = useAppStore(
     useShallow((state) => ({
-      greyMode: state.themeConfig.greyMode,
-      weakMode: state.themeConfig.weakMode,
+      greyMode: state.system.theme.greyMode,
+      weakMode: state.system.theme.weakMode,
+      setThemeConfig: state.setTheme,
     })),
   );
-
-  const setThemeConfig = useAppStore((state) => state.setThemeConfig);
 
   return (
     <>
@@ -83,10 +82,10 @@ function ThemeSchema() {
         </div>
 
         <SettingItem label={t('theme.drawer.appearance.greyMode')}>
-          <Switch checked={greyMode} onCheckedChange={(checked) => setThemeConfig({ greyMode: checked })} />
+          <Switch checked={greyMode} onCheckedChange={(checked) => setThemeConfig('greyMode', checked)} />
         </SettingItem>
         <SettingItem label={t('theme.drawer.appearance.weakMode')}>
-          <Switch checked={weakMode} onCheckedChange={(checked) => setThemeConfig({ weakMode: checked })} />
+          <Switch checked={weakMode} onCheckedChange={(checked) => setThemeConfig('weakMode', checked)} />
         </SettingItem>
       </div>
     </>

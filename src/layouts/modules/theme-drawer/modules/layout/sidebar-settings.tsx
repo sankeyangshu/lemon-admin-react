@@ -11,16 +11,16 @@ import SettingItem from '../../components/setting-item';
 function SidebarSettings() {
   const { t } = useTranslation();
 
-  const { layoutMode, width, collapsedWidth, mixWidth, mixCollapsedWidth, mixChildMenuWidth, autoSelectFirstMenu } = useAppStore(useShallow((state) => ({
-    layoutMode: state.themeConfig.layout.mode,
-    width: state.themeConfig.sidebar.width,
-    collapsedWidth: state.themeConfig.sidebar.collapsedWidth,
-    mixWidth: state.themeConfig.sidebar.mixWidth,
-    mixCollapsedWidth: state.themeConfig.sidebar.mixCollapsedWidth,
-    mixChildMenuWidth: state.themeConfig.sidebar.mixChildMenuWidth,
-    autoSelectFirstMenu: state.themeConfig.sidebar.autoSelectFirstMenu,
+  const { layoutMode, width, collapsedWidth, mixWidth, mixCollapsedWidth, mixChildMenuWidth, autoSelectFirstMenu, setSidebar } = useAppStore(useShallow((state) => ({
+    layoutMode: state.system.layout.mode,
+    width: state.system.sidebar.width,
+    collapsedWidth: state.system.sidebar.collapsedWidth,
+    mixWidth: state.system.sidebar.mixWidth,
+    mixCollapsedWidth: state.system.sidebar.mixCollapsedWidth,
+    mixChildMenuWidth: state.system.sidebar.mixChildMenuWidth,
+    autoSelectFirstMenu: state.system.sidebar.autoSelectFirstMenu,
+    setSidebar: state.setSidebar,
   })));
-  const setSidebar = useAppStore((state) => state.setSidebar);
 
   const isMixLayoutMode = layoutMode.includes('mix') || layoutMode.includes('hybrid');
   const isHybridLayoutMode = layoutMode.includes('hybrid');

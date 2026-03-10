@@ -37,6 +37,134 @@ const local: App.I18n.I18nScheme = {
     networkError: 'Network connection exception, please check the network connection!',
     requestConfigError: 'Request configuration error',
   },
+  theme: {
+    header: {
+      menuToggler: {
+        expand: 'Expand menu',
+        collapse: 'Collapse menu',
+      },
+      fullScreen: {
+        enter: 'Fullscreen',
+        exit: 'Exit fullscreen',
+      },
+      globalSearch: {
+        title: 'Search',
+        placeholder: 'Search page',
+        history: 'History',
+        selectKeyDown: 'Select',
+        switchKeyDown: 'Switch',
+        exitKeyDown: 'Exit',
+      },
+      themeMode: 'Theme Mode',
+      locale: 'Switch Language',
+      notice: {
+        title: 'Notice',
+        info: 'Message',
+        todo: 'Todo',
+        not: 'No Content',
+        all: 'View All',
+      },
+      user: {
+        userCenter: 'User center',
+        docs: 'Document',
+        github: 'Github',
+        lockScreen: 'Lock screen',
+      },
+    },
+    drawer: {
+      title: 'Theme Configuration',
+      tabs: {
+        appearance: 'Appearance',
+        layout: 'Layout',
+        general: 'General',
+      },
+      appearance: {
+        themeSchema: {
+          title: 'Theme Schema',
+          light: 'Light',
+          dark: 'Dark',
+          auto: 'System',
+        },
+        greyMode: 'Grayscale',
+        weakMode: 'Color Weakness',
+        themeRadius: 'Theme Radius',
+      },
+      layout: {
+        layoutMode: {
+          'title': 'Layout Mode',
+          'vertical': 'Vertical Mode',
+          'horizontal': 'Horizontal Mode',
+          'vertical-mix': 'Vertical Mix Mode',
+          'vertical-hybrid-header-first': 'Left Hybrid Header-First',
+          'top-hybrid-sidebar-first': 'Top-Hybrid Sidebar-First',
+          'top-hybrid-header-first': 'Top-Hybrid Header-First',
+          'vertical_detail': 'Vertical menu layout, with the menu on the left and content on the right.',
+          'vertical-mix_detail':
+            'Vertical mix-menu layout, with the primary menu on the dark left side and the secondary menu on the lighter left side.',
+          'vertical-hybrid-header-first_detail':
+            'Left hybrid layout, with the primary menu at the top, the secondary menu on the dark left side, and the tertiary menu on the lighter left side.',
+          'horizontal_detail': 'Horizontal menu layout, with the menu at the top and content below.',
+          'top-hybrid-sidebar-first_detail':
+            'Top hybrid layout, with the primary menu on the left and the secondary menu at the top.',
+          'top-hybrid-header-first_detail':
+            'Top hybrid layout, with the primary menu at the top and the secondary menu on the left.',
+        },
+        tab: {
+          title: 'Tab Settings',
+          visible: 'Tab Visible',
+          height: 'Tab Height',
+          mode: {
+            title: 'Tab Mode',
+            slider: 'Slider',
+            chrome: 'Chrome',
+            button: 'Button',
+          },
+          closeByMiddleClick: 'Close Tab by Middle Click',
+          closeByMiddleClickTip: 'Enable closing tabs by clicking with the middle mouse button',
+        },
+        header: {
+          title: 'Header Settings',
+          height: 'Header Height',
+          breadcrumb: {
+            visible: 'Breadcrumb Visible',
+            showIcon: 'Breadcrumb Icon Visible',
+          },
+        },
+        sidebar: {
+          title: 'Sider Settings',
+          inverted: 'Dark Sider',
+          width: 'Sider Width',
+          collapsedWidth: 'Sider Collapsed Width',
+          mixWidth: 'Mix Sider Width',
+          mixCollapsedWidth: 'Mix Sider Collapse Width',
+          mixChildMenuWidth: 'Mix Child Menu Width',
+          autoSelectFirstMenu: 'Auto Select First Submenu',
+          autoSelectFirstMenuTip:
+            'When a first-level menu is clicked, the first submenu is automatically selected and navigated to the deepest level',
+        },
+        footer: {
+          title: 'Footer Settings',
+          visible: 'Footer Visible',
+          fixed: 'Fixed Footer',
+          height: 'Footer Height',
+          right: 'Right Footer',
+        },
+        content: {
+          title: 'Content Area Settings',
+          scrollMode: {
+            title: 'Scroll Mode',
+            tip: 'The theme scroll only scrolls the main part, the outer scroll can carry the header and footer together',
+            wrapper: 'Wrapper',
+            content: 'Content',
+          },
+        },
+      },
+      footer: {
+        copyConfig: 'Copy Config',
+        resetConfig: 'Reset Config',
+      },
+    },
+  },
   login: {
     title: 'Welcome back',
     subTitle: 'Enter your username and password to login',
@@ -54,6 +182,7 @@ const local: App.I18n.I18nScheme = {
     otherSignIn: 'Or continue with',
     noAccount: 'Don\'t have an account?',
     register: 'Sign up',
+    logout: 'Log out',
   },
 };
 

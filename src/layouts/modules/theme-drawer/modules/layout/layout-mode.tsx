@@ -1,8 +1,9 @@
 import type { Tooltip as TooltipPrimitive } from '@base-ui/react/tooltip';
+import { useMediaQuery } from '@reactuses/core';
 import { useTranslation } from 'react-i18next';
-import { useShallow } from 'zustand/react/shallow';
 import { Divider } from '@/components/custom/divider';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { down } from '@/lib/breakpoints';
 import { cn } from '@/lib/utils';
 import { useAppStore } from '@/store/app';
 
@@ -105,10 +106,8 @@ function LayoutModeCard({ mode, disabled, ...rest }: LayoutModeCardProps) {
 function LayoutMode() {
   const { t } = useTranslation();
 
-  const { layoutMode, isMobile } = useAppStore(useShallow((state) => ({
-    layoutMode: state.themeConfig.layout.mode,
-    isMobile: state.systemConfig.isMobile,
-  })));
+  const layoutMode = useAppStore((state) => state.system.layout.mode);
+  const isMobile = useMediaQuery(down('md'));
 
   const layoutComponents: Record<App.Config.LayoutMode, React.ReactNode> = {
     'vertical': (
