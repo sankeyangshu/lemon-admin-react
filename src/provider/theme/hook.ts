@@ -1,6 +1,6 @@
 import { createContext, use } from 'react';
 
-type Theme = StorageType.Local['themeMode'];
+type Theme = App.Storage.Local['themeMode'];
 
 interface ThemeProviderState {
   theme: Theme;

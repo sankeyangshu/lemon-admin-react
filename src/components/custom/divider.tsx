@@ -1,4 +1,3 @@
-import type { CSSProperties, ReactNode } from 'react';
 import { isNil } from 'es-toolkit/compat';
 import { cn } from '@/lib/utils';
 
@@ -6,7 +5,7 @@ export interface DividerProps {
   /**
    * 嵌套的标题
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
   /**
    * 分割线样式类
    */
@@ -29,7 +28,7 @@ export interface DividerProps {
   /**
    * 分割线样式对象
    */
-  style?: CSSProperties;
+  style?: React.CSSProperties;
   /**
    * 间距大小，仅对水平布局有效
    * @default undefined

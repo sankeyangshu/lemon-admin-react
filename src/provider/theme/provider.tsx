@@ -5,7 +5,7 @@ import { ThemeProviderContext } from './hook';
 
 export const DARK_MODE_MEDIA_QUERY = '(prefers-color-scheme: dark)';
 
-type Theme = StorageType.Local['themeMode'];
+type Theme = App.Storage.Local['themeMode'];
 
 export interface ThemeProviderProps {
   children: React.ReactNode;
@@ -24,8 +24,8 @@ export function ThemeProvider({
   );
 
   // 订阅灰色和色弱模式
-  const greyMode = useAppStore((state) => state.themeConfig.greyMode);
-  const weakMode = useAppStore((state) => state.themeConfig.weakMode);
+  const greyMode = useAppStore((state) => state.system.theme.greyMode);
+  const weakMode = useAppStore((state) => state.system.theme.weakMode);
 
   // 处理主题切换
   useEffect(() => {
