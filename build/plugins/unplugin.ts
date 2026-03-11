@@ -3,6 +3,9 @@ import path from 'node:path';
 import process from 'node:process';
 import createSvgIconsPlugin from 'unplugin-svg-component/vite';
 
+const PRESERVE_COLOR_RE = /.*\.svg$/;
+const SVG_EXT_RE = /\.svg$/;
+
 /**
  * Configures the unplugin-svg-component plugin for Vite.
  * @descCN 配置unplugin-svg-component vite 插件
@@ -20,12 +23,12 @@ export function setupUnPluginSvgIconConfig(viteEnv: Env.ImportMeta) {
     prefix: VITE_ICON_PREFIX,
     componentName: 'LocalSvgIcon',
     treeShaking: false,
-    preserveColor: /.*\.svg$/, // 保留多色图标的原始颜色
+    preserveColor: PRESERVE_COLOR_RE, // 保留多色图标的原始颜色
     symbolIdFormatter: (svgName: string, prefix: string): string => {
       const nameArr = svgName.split('/');
       if (prefix)
         nameArr.unshift(prefix);
-      return nameArr.join('-').replace(/\.svg$/, '');
+      return nameArr.join('-').replace(SVG_EXT_RE, '');
     },
   });
 
