@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import { localStg } from '@/lib/storage';
 import { useAppStore } from '@/store/app';
 import { ThemeProviderContext } from './hook';
@@ -11,6 +11,17 @@ export interface ThemeProviderProps {
   children: React.ReactNode;
   defaultTheme?: Theme;
   storageKey?: 'themeMode';
+}
+
+const mediaQuery = window.matchMedia(DARK_MODE_MEDIA_QUERY);
+
+function subscribeMediaQuery(callback: () => void) {
+  mediaQuery.addEventListener('change', callback);
+  return () => mediaQuery.removeEventListener('change', callback);
+}
+
+function getMediaQuerySnapshot() {
+  return mediaQuery.matches;
 }
 
 export function ThemeProvider({
@@ -27,24 +38,17 @@ export function ThemeProvider({
   const greyMode = useAppStore((state) => state.system.theme.greyMode);
   const weakMode = useAppStore((state) => state.system.theme.weakMode);
 
-  // 处理主题切换
+  const systemDark = useSyncExternalStore(subscribeMediaQuery, getMediaQuerySnapshot);
+  const darkMode = theme === 'dark' || (theme === 'system' && systemDark);
+
   useEffect(() => {
     const root = window.document.documentElement;
 
     root.classList.remove('light', 'dark');
 
-    if (theme === 'system') {
-      const mediaQuery = window.matchMedia(DARK_MODE_MEDIA_QUERY);
-      const systemTheme = mediaQuery.matches ? 'dark' : 'light';
+    root.classList.add(darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
-      root.classList.add(systemTheme);
-      return;
-    }
-
-    root.classList.add(theme);
-  }, [theme]);
-
-  // 处理灰色和色弱模式
   useEffect(() => {
     const root = window.document.documentElement;
 
@@ -58,9 +62,10 @@ export function ThemeProvider({
 
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      localStg.setItem(storageKey, theme);
-      setTheme(theme);
+    darkMode,
+    setTheme: (newTheme: Theme) => {
+      localStg.setItem(storageKey, newTheme);
+      setTheme(newTheme);
     },
   };
 

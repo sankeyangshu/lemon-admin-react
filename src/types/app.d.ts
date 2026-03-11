@@ -471,6 +471,12 @@ declare namespace App {
          * @descCN 侧边栏折叠
          */
         sidebarCollapse: boolean;
+        /**
+         * Fixed header and tab
+         * @descCN 固定头部和标签栏
+         * @default true
+         */
+        fixedHeaderAndTab: boolean;
       };
     }
   }

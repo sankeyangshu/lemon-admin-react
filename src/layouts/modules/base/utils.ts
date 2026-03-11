@@ -8,9 +8,9 @@ export const LAYOUT_SCROLL_EL_ID = '__SCROLL_EL_ID__';
 
 /**
  * 布局的最大 z-index
- * @default 100
+ * @default 50
  */
-export const LAYOUT_MAX_Z_INDEX = 100;
+export const LAYOUT_MAX_Z_INDEX = 50;
 
 /**
  * 创建布局 CSS 变量

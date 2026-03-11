@@ -4,11 +4,13 @@ type Theme = App.Storage.Local['themeMode'];
 
 interface ThemeProviderState {
   theme: Theme;
+  darkMode: boolean;
   setTheme: (theme: Theme) => void;
 }
 
 const initialState: ThemeProviderState = {
   theme: 'system',
+  darkMode: false,
   setTheme: () => null,
 };
 

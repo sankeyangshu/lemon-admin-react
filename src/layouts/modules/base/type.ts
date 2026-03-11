@@ -100,7 +100,7 @@ interface LayoutFooterConfig {
    * 是否固定底部
    * @default true
    */
-  fixedFooter?: boolean;
+  footerFixed?: boolean;
   /**
    * 自定义底部类
    * @default ''
@@ -115,7 +115,7 @@ interface LayoutFooterConfig {
    * 是否在右侧
    * 当布局为垂直时，底部在右侧
    */
-  rightFooter?: boolean;
+  footerRight?: boolean;
 }
 
 /**
@@ -129,7 +129,7 @@ export type LayoutMode = Extract<App.Config.LayoutMode, 'horizontal' | 'vertical
  * 内容溢出时滚动模式
  * @default 'content'
  */
-export type LayoutScrollMode = App.Config.ThemeConfig['layout']['scrollMode'];
+export type LayoutScrollMode = App.Config.System['layout']['scrollMode'];
 
 /**
  * 布局 Props

@@ -1,6 +1,6 @@
 import type { LayoutProps } from './type';
 import { cn } from '@/lib/utils';
-import style from './base.module.css';
+import { layoutClasses } from './classes';
 import { createLayoutCssVars, LAYOUT_MAX_Z_INDEX, LAYOUT_SCROLL_EL_ID } from './utils';
 
 interface BaseLayoutProps extends LayoutProps {
@@ -53,8 +53,8 @@ function BaseLayout(props: BaseLayoutProps) {
     footer,
     footerVisible = true,
     footerHeight = 48,
-    rightFooter = false,
-    fixedFooter = true,
+    footerRight = false,
+    footerFixed = true,
     footerClass = '',
 
     onUpdateSidebarCollapse,
@@ -93,23 +93,23 @@ function BaseLayout(props: BaseLayoutProps) {
   // 样式类
   const leftGapClass = !fullContent && showSidebar
     ? sidebarCollapse
-      ? style['left-gap_collapsed']
-      : style['left-gap']
+      ? layoutClasses.leftGapCollapsed
+      : layoutClasses.leftGap
     : '';
 
   const headerLeftGapClass = isVertical ? leftGapClass : '';
 
   const footerLeftGapClass
     = isVertical
-      || (isHorizontal && isWrapperScroll && !fixedFooter)
-      || (isHorizontal && rightFooter)
+      || (isHorizontal && isWrapperScroll && !footerFixed)
+      || (isHorizontal && footerRight)
       ? leftGapClass
       : '';
 
   // 侧边栏内边距
   const sidebarPaddingClass = cn(
-    showHeader && !headerLeftGapClass && style['sidebar-padding-top'],
-    showFooter && !footerLeftGapClass && style['sidebar-padding-bottom'],
+    showHeader && !headerLeftGapClass && layoutClasses.sidebarPaddingTop,
+    showFooter && !footerLeftGapClass && layoutClasses.sidebarPaddingBottom,
   );
 
   const handleClickMask = () => {
@@ -133,7 +133,7 @@ function BaseLayout(props: BaseLayoutProps) {
             <header
               className={cn(
                 'shrink-0',
-                style['layout-header'],
+                layoutClasses.header,
                 commonClass,
                 headerLeftGapClass,
                 fixedHeaderAndTab && 'absolute top-0 left-0 w-full',
@@ -145,7 +145,7 @@ function BaseLayout(props: BaseLayoutProps) {
             <div
               className={cn(
                 'shrink-0 overflow-hidden',
-                style['layout-header-placement'],
+                layoutClasses.headerPlacement,
               )}
               style={{ display: (!fullContent && fixedHeaderAndTab) ? undefined : 'none' }}
             />
@@ -158,7 +158,7 @@ function BaseLayout(props: BaseLayoutProps) {
             <div
               className={cn(
                 'shrink-0',
-                style['layout-tab'],
+                layoutClasses.tab,
                 commonClass,
                 tabClass,
                 (fullContent || !showHeader) && 'top-0!',
@@ -171,7 +171,7 @@ function BaseLayout(props: BaseLayoutProps) {
             <div
               className={cn(
                 'shrink-0 overflow-hidden',
-                style['layout-tab-placement'],
+                layoutClasses.tabPlacement,
               )}
               style={{ display: (fullContent || fixedHeaderAndTab) ? undefined : 'none' }}
             />
@@ -186,7 +186,7 @@ function BaseLayout(props: BaseLayoutProps) {
               commonClass,
               sidebarClass,
               sidebarPaddingClass,
-              sidebarCollapse ? style['layout-sidebar_collapsed'] : style['layout-sidebar'],
+              sidebarCollapse ? layoutClasses.sidebarCollapsed : layoutClasses.sidebar,
             )}
             style={{ display: fullContent ? 'none' : undefined }}
           >
@@ -202,8 +202,8 @@ function BaseLayout(props: BaseLayoutProps) {
                 'absolute top-0 left-0 h-full w-0 bg-white',
                 commonClass,
                 mobileSidebarClass,
-                style['layout-mobile-sidebar'],
-                sidebarCollapse ? 'overflow-hidden' : style['layout-sidebar'],
+                layoutClasses.mobileSidebar,
+                sidebarCollapse ? 'overflow-hidden' : layoutClasses.sidebar,
               )}
             >
               {sidebar}
@@ -211,7 +211,7 @@ function BaseLayout(props: BaseLayoutProps) {
             <div
               className={cn(
                 'absolute top-0 left-0 size-full bg-black/20',
-                style['layout-mobile-sidebar-mask'],
+                layoutClasses.mobileSidebarMask,
               )}
               style={{ display: sidebarCollapse ? 'none' : undefined }}
               onClick={handleClickMask}
@@ -239,11 +239,11 @@ function BaseLayout(props: BaseLayoutProps) {
             <footer
               className={cn(
                 'shrink-0',
-                style['layout-footer'],
+                layoutClasses.footer,
                 commonClass,
                 footerClass,
                 footerLeftGapClass,
-                fixedFooter && 'absolute bottom-0 left-0 w-full',
+                footerFixed && 'absolute bottom-0 left-0 w-full',
               )}
               style={{ display: fullContent ? 'none' : undefined }}
             >
@@ -252,9 +252,9 @@ function BaseLayout(props: BaseLayoutProps) {
             <div
               className={cn(
                 'shrink-0 overflow-hidden',
-                style['layout-footer-placement'],
+                layoutClasses.footerPlacement,
               )}
-              style={{ display: (!fullContent && fixedFooter) ? undefined : 'none' }}
+              style={{ display: (!fullContent && footerFixed) ? undefined : 'none' }}
             />
           </>
         )}

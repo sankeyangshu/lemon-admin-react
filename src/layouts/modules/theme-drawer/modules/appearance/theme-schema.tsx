@@ -18,7 +18,7 @@ interface ThemeItem {
 
 function ThemeSchema() {
   const { t } = useTranslation();
-  const { theme, setTheme } = useTheme();
+  const { theme, darkMode, setTheme } = useTheme();
 
   const settingThemeList: ThemeItem[] = [
     {
@@ -38,13 +38,18 @@ function ThemeSchema() {
     },
   ];
 
-  const { greyMode, weakMode, setThemeConfig } = useAppStore(
+  const { layoutMode, inverted, greyMode, weakMode, setThemeConfig, setSidebar } = useAppStore(
     useShallow((state) => ({
+      layoutMode: state.system.layout.mode,
+      inverted: state.system.sidebar.inverted,
       greyMode: state.system.theme.greyMode,
       weakMode: state.system.theme.weakMode,
       setThemeConfig: state.setTheme,
+      setSidebar: state.setSidebar,
     })),
   );
+
+  const showSidebarInverted = !darkMode && layoutMode.includes('vertical');
 
   return (
     <>
@@ -79,6 +84,19 @@ function ThemeSchema() {
               <div className="mt-1.5 text-sm">{item.label}</div>
             </div>
           ))}
+        </div>
+
+        <div
+          className={cn(
+            'grid overflow-hidden transition-all duration-300',
+            showSidebarInverted
+              ? 'translate-x-0 grid-rows-[1fr] opacity-100'
+              : 'translate-x-5 grid-rows-[0fr] opacity-0',
+          )}
+        >
+          <SettingItem label={t('theme.drawer.layout.sidebar.inverted')} className="overflow-hidden">
+            <Switch checked={inverted} onCheckedChange={(checked) => setSidebar('inverted', checked)} />
+          </SettingItem>
         </div>
 
         <SettingItem label={t('theme.drawer.appearance.greyMode')}>
