@@ -1,19 +1,19 @@
 // 全局默认配置项
 
 /**
- * 首页地址（默认）
+ * 全局头部菜单 ID
  */
-export const HOME_URL = '/home';
+export const GLOBAL_HEADER_MENU_ID = '__GLOBAL_HEADER_MENU__';
 
 /**
- * 登录页地址（默认）
+ * 全局侧边栏菜单 ID
  */
-export const LOGIN_URL = '/login';
+export const GLOBAL_SIDEBAR_MENU_ID = '__GLOBAL_SIDEBAR_MENU__';
 
 /**
  * 默认主题颜色
  */
-export const DEFAULT_THEMECOLOR = '#1890ff';
+export const DEFAULT_THEME_COLOR = '';
 
 /**
  * 高德地图 key
