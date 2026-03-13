@@ -30,18 +30,7 @@ declare module '@tanstack/react-router' {
   /**
    * 路由静态数据
    */
-  interface StaticDataRouteOption {
-    /**
-     * 路由标题
-     */
-    title?: string;
-
-    /**
-     * 国际化key
-     */
-    i18nKey?: string;
-
-    // 扩展更多...
+  interface StaticDataRouteOption extends App.Global.RouteStaticData {
   }
 }
 

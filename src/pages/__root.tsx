@@ -6,6 +6,7 @@ import { createRootRouteWithContext, Outlet, useMatches } from '@tanstack/react-
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { useTranslation } from 'react-i18next';
 import NavigationProgress from '@/components/common/navigation-progress';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 interface MyRouterContext {
   queryClient: QueryClient;
@@ -30,8 +31,10 @@ function RootComponent() {
 
   return (
     <>
-      <NavigationProgress />
-      <Outlet />
+      <TooltipProvider>
+        <NavigationProgress />
+        <Outlet />
+      </TooltipProvider>
       {import.meta.env.MODE === 'development' && (
         <TanStackDevtools
           config={{

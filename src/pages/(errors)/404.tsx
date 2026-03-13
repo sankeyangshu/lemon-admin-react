@@ -5,6 +5,7 @@ export const Route = createFileRoute('/(errors)/404')({
   staticData: {
     title: '404',
     i18nKey: 'system.notFound',
+    hideInMenu: true,
   },
   component: NotFound,
 });

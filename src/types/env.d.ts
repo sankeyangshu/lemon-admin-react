@@ -65,6 +65,13 @@ declare namespace Env {
      */
     readonly VITE_USE_MOCK: boolean;
     /**
+     * The auth route mode
+     * @descCN 权限路由模式
+     * - Static: 静态权限路由，在客户端生成
+     * - Dynamic: 动态权限路由，在服务端生成，通过接口获取权限路由
+     */
+    readonly VITE_AUTH_ROUTE_MODE: 'static' | 'dynamic';
+    /**
      * Iconify api provider url, if the project is deployed in intranet, you can set the api provider url to the local iconify server
      * @descCN iconify api 提供者 url, 如果项目部署在内网, 可以设置 api 提供者 url 为本地 iconify 服务
      * @see {@link https://docs.iconify.design/api/providers.html}

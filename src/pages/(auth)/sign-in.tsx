@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 import LocalePicker from '@/components/custom/locale-picker';
 import SvgIcon from '@/components/custom/svg-icon';
 import SwitchDark from '@/components/custom/switch-dark';
@@ -9,6 +10,8 @@ export const Route = createFileRoute('/(auth)/sign-in')({
 });
 
 function RouteComponent() {
+  const { t } = useTranslation();
+
   return (
     <div
       className="relative flex min-h-svh items-center justify-center bg-muted"
@@ -30,7 +33,7 @@ function RouteComponent() {
         >
           <div className="flex cursor-pointer items-center gap-2 font-medium">
             <SvgIcon localIcon="icon-logo" className="size-6!" />
-            <span>Lemon Admin</span>
+            <span>{t('system.title')}</span>
           </div>
         </div>
 

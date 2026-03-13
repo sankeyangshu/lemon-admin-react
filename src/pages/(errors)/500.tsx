@@ -5,6 +5,7 @@ export const Route = createFileRoute('/(errors)/500')({
   staticData: {
     title: '500',
     i18nKey: 'system.serverError',
+    hideInMenu: true,
   },
   component: ServerError,
 });

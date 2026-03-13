@@ -146,7 +146,6 @@ function Notice({ className }: { className?: string }) {
                 key={item.title}
                 className="
                   box-border flex cursor-pointer items-center p-3.5
-                  last:border-b-0
                   hover:bg-muted hover:text-foreground
                 "
               >

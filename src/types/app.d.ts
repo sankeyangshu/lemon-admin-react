@@ -194,6 +194,17 @@ declare namespace App {
         logout: string;
       };
     }
+
+    type GetI18nKey<T extends Record<string, unknown>, K extends keyof T = keyof T> = K extends string
+      ? T[K] extends Record<string, unknown>
+        ? `${K}.${GetI18nKey<T[K]>}`
+        : K
+      : never;
+
+    /**
+     * I18n key
+     */
+    type I18nKey = GetI18nKey<I18nScheme>;
   }
 
   /**
@@ -479,5 +490,86 @@ declare namespace App {
         fixedHeaderAndTab: boolean;
       };
     }
+  }
+
+  /**
+   * Global namespace
+   */
+  namespace Global {
+    type RouteId = keyof import('@/routeTree.gen').FileRoutesById;
+    type RoutePath = keyof import('@/routeTree.gen').FileRoutesByTo;
+
+    /**
+     * Menu
+     * @descCN 菜单
+     */
+    interface Menu {
+      /**
+       * 菜单 key
+       */
+      key: string;
+      /**
+       * 菜单标题
+       */
+      title: string;
+      /**
+       * 路由 ID
+       */
+      routeId: RouteId;
+      /**
+       * 路由路径
+       */
+      routePath: RoutePath;
+      /**
+       * 国际化 key
+       */
+      i18nKey?: App.I18n.I18nKey;
+      /**
+       * 菜单图标
+       */
+      icon?: React.ReactNode;
+      /**
+       * 菜单标签
+       */
+      label?: string;
+      /**
+       * 菜单描述
+       */
+      caption?: string;
+      /**
+       * 排序值
+       */
+      order?: number;
+      /**
+       * 隐藏菜单
+       */
+      hideInMenu?: boolean;
+      /**
+       * 是否禁用
+       */
+      disabled?: boolean;
+      /**
+       * 子菜单
+       */
+      children?: Menu[];
+    }
+
+    /**
+     * 路由静态数据
+     */
+    interface RouteStaticData extends Omit<Menu, 'key' | 'title' | 'routeId' | 'routePath' | 'children'> {
+      /**
+       * 路由标题
+       */
+      title?: string;
+    }
+
+    /**
+     * Breadcrumb
+     * @descCN 面包屑
+     */
+    type Breadcrumb = Omit<Menu, 'children'> & {
+      options?: Breadcrumb[];
+    };
   }
 }
