@@ -20,6 +20,10 @@ export default defineConfig((config: ConfigEnv): UserConfig => {
     // 加载插件
     plugins: createVitePlugins(viteEnv, lastBuildTime),
 
+    resolve: {
+      tsconfigPaths: true,
+    },
+
     // 跨域代理
     server: {
       host: true,
@@ -33,22 +37,18 @@ export default defineConfig((config: ConfigEnv): UserConfig => {
       BUILD_TIME: JSON.stringify(lastBuildTime),
     },
 
-    esbuild: {
-      // 使用 esbuild 压缩 剔除 console 和 debugger
-      drop: viteEnv.VITE_DROP_CONSOLE ? ['console', 'debugger'] : [],
-    },
-
     build: {
-      minify: 'esbuild',
-      sourcemap: false,
       outDir: viteEnv.VITE_OUTPUT_DIR || 'dist',
       reportCompressedSize: false,
       chunkSizeWarningLimit: 2000,
-      rollupOptions: {
+      rolldownOptions: {
         output: {
           chunkFileNames: 'js/[name]-[hash].js', // 引入文件名的名称
           entryFileNames: 'js/[name]-[hash].js', // 包的入口文件名称
           assetFileNames: '[ext]/[name]-[hash].[ext]', // 资源文件像 字体，图片等
+          minify: viteEnv.VITE_DROP_CONSOLE
+            ? { compress: { dropConsole: true } }
+            : undefined,
         },
       },
     },
