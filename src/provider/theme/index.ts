@@ -1,2 +1,3 @@
-export { useTheme } from './hook';
-export { DARK_MODE_MEDIA_QUERY, ThemeProvider } from './provider';
+export { ThemeColorsPresets } from './config';
+export { DARK_MODE_MEDIA_QUERY, useTheme } from './hook';
+export { ThemeProvider } from './provider';

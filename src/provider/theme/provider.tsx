@@ -1,9 +1,10 @@
 import { useEffect, useState, useSyncExternalStore } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { localStg } from '@/lib/storage';
 import { useAppStore } from '@/store/app';
-import { ThemeProviderContext } from './hook';
-
-export const DARK_MODE_MEDIA_QUERY = '(prefers-color-scheme: dark)';
+import { ThemeColorsPresets } from './config';
+import { DARK_MODE_MEDIA_QUERY, ThemeProviderContext } from './hook';
+import { addThemeVarsToGlobal } from './utils';
 
 type Theme = App.Storage.Local['themeMode'];
 
@@ -34,13 +35,17 @@ export function ThemeProvider({
     () => (localStg.getItem(storageKey)) || defaultTheme,
   );
 
-  // 订阅灰色和色弱模式
-  const greyMode = useAppStore((state) => state.system.theme.greyMode);
-  const weakMode = useAppStore((state) => state.system.theme.weakMode);
+  // 订阅灰色、色弱模式和主题颜色
+  const { greyMode, weakMode, themeColor } = useAppStore(useShallow((state) => ({
+    greyMode: state.system.theme.greyMode,
+    weakMode: state.system.theme.weakMode,
+    themeColor: state.system.theme.color,
+  })));
 
   const systemDark = useSyncExternalStore(subscribeMediaQuery, getMediaQuerySnapshot);
   const darkMode = theme === 'dark' || (theme === 'system' && systemDark);
 
+  // 暗黑/明亮模式切换
   useEffect(() => {
     const root = window.document.documentElement;
 
@@ -49,6 +54,7 @@ export function ThemeProvider({
     root.classList.add(darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
+  // 灰色和色弱模式
   useEffect(() => {
     const root = window.document.documentElement;
 
@@ -59,6 +65,11 @@ export function ThemeProvider({
       .filter(Boolean)
       .join(' ');
   }, [greyMode, weakMode]);
+
+  // 添加主题颜色变量到全局
+  useEffect(() => {
+    addThemeVarsToGlobal(ThemeColorsPresets[themeColor]);
+  }, [themeColor]);
 
   const value = {
     theme,
