@@ -2,9 +2,8 @@ import { useEffect, useState, useSyncExternalStore } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { localStg } from '@/lib/storage';
 import { useAppStore } from '@/store/app';
-import { ThemeColorsPresets } from './config';
 import { DARK_MODE_MEDIA_QUERY, ThemeProviderContext } from './hook';
-import { addThemeVarsToGlobal } from './utils';
+import { addThemeVarsToGlobal, ThemeColorsPresets } from './utils';
 
 type Theme = App.Storage.Local['themeMode'];
 

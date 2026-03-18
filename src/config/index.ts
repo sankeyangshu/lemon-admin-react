@@ -11,11 +11,6 @@ export const GLOBAL_HEADER_MENU_ID = '__GLOBAL_HEADER_MENU__';
 export const GLOBAL_SIDEBAR_MENU_ID = '__GLOBAL_SIDEBAR_MENU__';
 
 /**
- * 默认主题颜色
- */
-export const DEFAULT_THEME_COLOR = '';
-
-/**
  * 高德地图 key
  */
 export const AMAP_MAP_KEY = '';

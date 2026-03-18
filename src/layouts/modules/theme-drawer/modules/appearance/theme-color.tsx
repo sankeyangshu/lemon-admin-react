@@ -27,8 +27,8 @@ function ThemeColor() {
               `,
               themeColor === preset && 'w-13',
             )}
-            style={{ backgroundColor: color.default }}
-            onClick={() => setTheme('color', preset as App.Theme.ThemeColor)}
+            style={{ backgroundColor: color }}
+            onClick={() => setTheme('color', preset as App.Config.ThemeColor)}
           >
             <div
               className={cn(

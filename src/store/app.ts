@@ -53,7 +53,7 @@ interface AppActions {
 
 const defaultSystem: App.Config.System = {
   theme: {
-    color: '#009688',
+    color: 'teal',
     greyMode: false,
     weakMode: false,
     radius: 6,

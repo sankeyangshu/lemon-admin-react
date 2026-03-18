@@ -87,6 +87,7 @@ const local: App.I18n.I18nScheme = {
         },
         greyMode: '灰色模式',
         weakMode: '色弱模式',
+        themeColor: '主题颜色',
         themeRadius: '主题圆角',
       },
       layout: {

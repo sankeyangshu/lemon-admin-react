@@ -1,26 +1,30 @@
 /**
+ * Theme colors presets
+ * @descCN 主题颜色预设
+ */
+export const ThemeColorsPresets: Record<App.Config.ThemeColor, string> = {
+  teal: '#009688',
+  beige: '#daa96e',
+  oceanBlue: '#0c819f',
+  emeraldGreen: '#27ae60',
+  hotPink: '#ff5c93',
+  coralRed: '#e74c3c',
+  salmonPink: '#fd726d',
+  orange: '#f39c12',
+  violet: '#9b59b6',
+};
+
+/**
  * Add theme vars to global
  * @descCN 添加主题变量到全局
- * @param tokens 主题 token
  */
-export function addThemeVarsToGlobal(tokens: App.Theme.BaseToken) {
-  const { light, default: defaultColor, dark } = tokens;
-
+export function addThemeVarsToGlobal(color: string) {
   const css = `
     :root {
-      --primary: ${defaultColor};
-      --primary-foreground: ${light};
-      --ring: ${defaultColor};
-      --sidebar-primary: ${defaultColor};
-      --sidebar-primary-foreground: ${light};
-      --sidebar-ring: ${defaultColor};
-    }
-  `;
-
-  const darkCss = `
-    .dark {
-      --primary-foreground: ${dark};
-      --sidebar-primary-foreground: ${dark};
+      --primary: ${color};
+      --ring: ${color};
+      --sidebar-primary: ${color};
+      --sidebar-ring: ${color};
     }
   `;
 
@@ -30,7 +34,7 @@ export function addThemeVarsToGlobal(tokens: App.Theme.BaseToken) {
 
   style.id = styleId;
 
-  style.textContent = css + darkCss;
+  style.textContent = css;
 
   document.head.appendChild(style);
 }

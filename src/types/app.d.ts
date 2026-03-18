@@ -116,19 +116,20 @@ declare namespace App {
             };
             greyMode: string;
             weakMode: string;
+            themeColor: string;
             themeRadius: string;
           };
           layout: {
             layoutMode: {
               title: string;
-            } & Record<App.Config.LayoutMode, string> & {
-              [K in `${App.Config.LayoutMode}_detail`]: string;
+            } & Record<Config.LayoutMode, string> & {
+              [K in `${Config.LayoutMode}_detail`]: string;
             };
             tab: {
               title: string;
               visible: string;
               height: string;
-              mode: { title: string } & Record<App.Config.TabMode, string>;
+              mode: { title: string } & Record<Config.TabMode, string>;
               closeByMiddleClick: string;
               closeByMiddleClickTip: string;
             };
@@ -221,7 +222,7 @@ declare namespace App {
        * The i18n language
        * @descCN 国际化语言
        */
-      language: App.I18n.LangType;
+      language: I18n.LangType;
       /**
        * The theme mode
        * @descCN 主题模式
@@ -235,6 +236,12 @@ declare namespace App {
    * @descCN 全局配置命名空间
    */
   namespace Config {
+    /**
+     * Theme color type
+     * @descCN 主题颜色类型
+     */
+    type ThemeColor = 'teal' | 'beige' | 'oceanBlue' | 'emeraldGreen' | 'hotPink' | 'coralRed' | 'salmonPink' | 'orange' | 'violet';
+
     /**
      * Layout mode type
      * @descCN 布局模式类型
@@ -268,8 +275,9 @@ declare namespace App {
         /**
          * Theme color
          * @descCN 主题颜色
+         * @default 'teal'
          */
-        color: string;
+        color: ThemeColor;
         /**
          * grey mode
          * @descCN 灰度模式
@@ -523,7 +531,7 @@ declare namespace App {
       /**
        * 国际化 key
        */
-      i18nKey?: App.I18n.I18nKey;
+      i18nKey?: I18n.I18nKey;
       /**
        * 菜单图标
        */
